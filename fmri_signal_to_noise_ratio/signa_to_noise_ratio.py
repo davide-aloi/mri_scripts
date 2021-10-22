@@ -33,12 +33,12 @@ def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
         
         #Applying ROI to input image
         for i in range(0,input_image_data.shape[3]):
-            print('Applying mask to volume: ' + str(i))
+            print('Applying mask to volume: ' + str(i+1))
             input_image_data[:,:,:,i] = np.multiply(input_image_data[:,:,:,i], ROI_image_data)
     
     #Calculating mean and standard deviation
-    mean = np.nanmean(input_image_data,3)
-    std = np.nanstd(input_image_data,3)
+    mean = np.nanmean(input_image_data, 3)
+    std = np.nanstd(input_image_data, 3)
          
     #Saving masked file
     if save_output == True:
