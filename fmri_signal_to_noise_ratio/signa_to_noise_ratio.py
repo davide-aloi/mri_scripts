@@ -15,7 +15,7 @@ def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
     calculating the SNR
     
     input_path = path of the functional scan (nifti format)
-    ROI_path = path to the ROI (if you're using one). Default = None
+    ROI_path = path of the ROI (if you're using one). Default = None
     save_output = save the masked file. Default = False                           
     """
     
