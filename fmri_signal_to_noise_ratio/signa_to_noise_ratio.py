@@ -5,9 +5,6 @@ Created on Fri Oct 22 12:12:55 2021
 @author: Davide Aloi, PhD student - University of Birmingham 
 """
 
-from nilearn import image
-import numpy as np
-
 def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
     
     """   
@@ -18,6 +15,8 @@ def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
     ROI_path = path of the ROI (if you're using one). Default = None
     save_output = save the masked file. Default = False                           
     """
+    from nilearn import image
+    import numpy as np
     
     #Loading functional scan
     input_image = image.load_img(input_path)
