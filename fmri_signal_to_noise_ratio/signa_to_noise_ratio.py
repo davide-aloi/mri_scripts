@@ -42,6 +42,8 @@ def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
          
     #Saving masked file
     if save_output == True:
-        image.math_img("img", img=input_image_data).to_filename(input_path.split('/')[-1] + '_masked.nii.gz')
+        import nibabel as nib
+        ni_img = nib.Nifti1Image(input_image_data, input_image.affine)
+        image.math_img("img", img=ni_img).to_filename(input_path.split('/')[-1] + '_masked.nii.gz')
     
     return np.nanmean(mean/std)
