@@ -14,7 +14,7 @@ def sig_to_noise_nifti(input_path,ROI_path=None,save_output=False):
     Calculates the signal-to-noise ratio (SNR) of a functional scan. If a ROI is provided, the script applies the ROI to the scan before 
     calculating the SNR
     
-    input_path = path of the functional scan
+    input_path = path of the functional scan (nifti format)
     ROI_path = path to the ROI (if you're using one). Default = None
     save_output = save the masked file. Default = False                           
     """
