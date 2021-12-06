@@ -9,10 +9,10 @@ Created on Wed Dec  1 13:29:38 2021
 import os
 from nilearn import image
 
-main_folder = "C:/Users/davide/Downloads/"
-output_path = "C:/Users/davide/Downloads/xsabri/"
-func_file = "swa_minus_first10vols.nii" # func file
-mask = "icbm_avg_152_t1_tal_nlin_symmetric_VI_mask.nii"
+main_folder = ""
+output_path = ""
+func_file = "" # func file
+mask = ""
 
 # func path
 func_map = os.path.join(main_folder, func_file) #path to func file
