@@ -2,9 +2,8 @@
 """
 Created on Wed Dec  1 13:29:38 2021
 
-@author: Davide Aloi
+@author: Davide Aloi, PhD student - University of Birmingham
 """
-
 
 import os
 from nilearn import image
@@ -24,7 +23,7 @@ func_map = image.load_img(func_map) #load func file
 mask_map = os.path.join(main_folder,mask)
 
 # Loading mask
-mask_map = image.load_img(mask_map) # left thalamus
+mask_map = image.load_img(mask_map)
 
 
 from nilearn.image import resample_to_img
@@ -41,7 +40,4 @@ print(mask_resampled.get_fdata().shape)
 
 #Saving everything
 
-image.math_img("img", img=mask_resampled).to_filename('maskxsabri.nii.gz')
-
-
-
+image.math_img("img", img=mask_resampled).to_filename('output.nii.gz')
