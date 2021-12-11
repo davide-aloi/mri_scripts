@@ -5,6 +5,18 @@ Created on Sat Dec 11 00:06:38 2021
 @author: davide
 """
 
+
+
+
+
+
+
+#mni space to matrix space (I'm sure there's an easier way...)
+rot_mat =   np.array([[-1 ,   0,     0,    91],
+            [ 0,     1,     0,  -127],
+            [ 0,     0,     1,   -73],
+            [ 0,     0,     0,     1]])
+
 for i in range(0,len(table['Cluster Size (mm3)'])):
     
     coords = np.array([table['X'][i],table['Y'][i],table['Z'][i]])
