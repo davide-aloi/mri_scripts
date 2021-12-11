@@ -83,9 +83,6 @@ for i in (a):
     print(i.area)
 
 
-
-
-
 from nilearn import plotting
 plotting.plot_stat_map(atlas)
 plotting.plot_stat_map(atlas, colorbar = False, vmax = 1, cmap = 'red_transparent')

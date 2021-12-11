@@ -26,9 +26,9 @@ def mni_to_matrix(mni_coords,T=0):
 
 def matrix_to_mni(matrix_coord,T=0):
     if T == 0:
-        T = np.array([[-4,   0,     0,    84],
-                      [ 0,     4,     0,  -116],
-                      [ 0,     0,     4,   -56],
+        T = np.array([[-1,   0,     0,    91],
+                      [ 0,     1,     0,  -127],
+                      [ 0,     0,     1,   -73],
                       [ 0,     0,     0,     1]])
         
         second_arg = np.array([matrix_coord[0],matrix_coord[1],matrix_coord[2], 1]);
