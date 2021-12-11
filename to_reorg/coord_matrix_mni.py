@@ -5,38 +5,33 @@ Created on Sat Dec 11 00:06:38 2021
 @author: davide
 """
 
+import numpy as np
 
+def mni_to_matrix(mni_coords,T=0):
+    if T==0:
+        T = np.array([[-1 ,   0,     0,    91],
+                      [ 0,     1,     0,  -127],
+                      [ 0,     0,     1,   -73],
+                      [ 0,     0,     0,     1]])    
 
-
-
-
-
-#mni space to matrix space (I'm sure there's an easier way...)
-rot_mat =   np.array([[-1 ,   0,     0,    91],
-            [ 0,     1,     0,  -127],
-            [ 0,     0,     1,   -73],
-            [ 0,     0,     0,     1]])
-
-for i in range(0,len(table['Cluster Size (mm3)'])):
-    
-    coords = np.array([table['X'][i],table['Y'][i],table['Z'][i]])
-
-    first_arg = np.transpose(np.linalg.inv(rot_mat))
-    second_arg = (np.array([coords[0],coords[1],coords[2], 1]));
+    first_arg = np.transpose(np.linalg.inv(T))
+    second_arg = (np.array([mni_coords[0],mni_coords[1],mni_coords[2], 1]));
     
     mat_coord = np.dot(second_arg,first_arg);
     mat_coord = mat_coord[0:3];
     mat_coord = np.round(mat_coord[:]);#matrix coordinates for the MNI coordinates of the cluster
+    
+    return mat_coord
 
-    label = atlas_data[int(mat_coord[0])-1,int(mat_coord[1])-1,int(mat_coord[2])-1]
-    
-    print('Cluster coordinate (MNI)')
-    print(coords)
-    print('Cluster coordinate (matrix space)')
 
-    print(mat_coord)
-    print('T value')
-    print(dti_data[int(mat_coord[0])-1,int(mat_coord[1])-1,int(mat_coord[2])-1])
-    print(atlas_data[int(mat_coord[0])-1,int(mat_coord[1])-1,int(mat_coord[2])-1])
-    
-    
+def matrix_to_mni(matrix_coord,T=0):
+    if T == 0:
+        T = np.array([[-4,   0,     0,    84],
+                      [ 0,     4,     0,  -116],
+                      [ 0,     0,     4,   -56],
+                      [ 0,     0,     0,     1]])
+        
+        second_arg = np.array([matrix_coord[0],matrix_coord[1],matrix_coord[2], 1]);
+        second_arg = np.reshape(second_arg,[-1,1])
+        mni_coord = np.dot(T,second_arg)
+        return np.reshape(mni_coord[0:3],[1,-1])

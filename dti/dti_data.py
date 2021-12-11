@@ -53,26 +53,32 @@ print('Significant voxels (p<0.05): ' + str(num_sig_voxels))
 atlasCC = image.math_img("np.where((img > 2)&(img < 6),1,0)", img=atlas)
 dti_CC = image.math_img("img * img2", img=dti_map, img2 = atlasCC) #Applying  mask
 
-#dti_CC_norm = image.math_img("img * img2", img=dti_map) #Applying  mask
-
-
-
 csize = 20    
 tableCC = get_clusters_table(dti_CC, stat_threshold=th,
                            cluster_threshold=csize)    
 
+dti_CC_bin = image.math_img("np.where((img > 0.95),1,0)", img=dti_CC)
 
-import skimage
+from skimage import measure
+# If you want to cross check that get_clusters_table is outputting the right results
 nclusters = 0
-arr = measure.label(np.where(dti_CC.get_fdata()>th,1,0),connectivity = 1)
+arr = measure.label(dti_CC_bin.get_fdata(), connectivity = 1)
+peaks = []
+coords = []
 
-for i in np.unique(arr):
+for i in np.unique(arr[arr!=0]):
+    #print('Analysing cluster ' + str(i))
     if (arr==i).sum()<csize:
-        nclusters +=1
         arr[arr==i] = 0
+    else:
+        nclusters +=1
+        peaks.append(np.max((dti_CC.get_fdata()[arr==i])))
+        this_coord = np.argmax(np.where(np.where(arr == i,True,False),dti_CC.get_fdata(),0))
+        coords.append(np.unravel_index(this_coord,arr.shape))
         
 a = measure.regionprops(arr)
 
+print('total clusters found: ' + str(nclusters))
 for i in (a):
     print(i.area)
 
