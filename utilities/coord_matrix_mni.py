@@ -4,7 +4,7 @@
 Calculates MNI coordinates from matrix coordinates or matrix coordinates from MNI coordinates.
 Input: MNI / matrix coordinates, and transformation / rotation matrix
 
-Please, remember that python indices from 0, as such, you have to add + 1 to the resulting matrix coordinates 
+Please, remember that python indices from 0, as such, you have to add + 1 to the resulting matrix coordinates
 
 """
 
@@ -32,7 +32,6 @@ def mni_to_matrix(mni_coords,T=None):
 def matrix_to_mni(matrix_coord,T=None):
     # From matrix space to MNI space
 
-
     if T == None:
         T = np.array([[-1,   0,     0,    91],
                       [ 0,     1,     0,  -127],
@@ -42,4 +41,5 @@ def matrix_to_mni(matrix_coord,T=None):
         second_arg = np.array([matrix_coord[0],matrix_coord[1],matrix_coord[2], 1]);
         second_arg = np.reshape(second_arg,[-1,1])
         mni_coord = np.dot(T,second_arg)
+
         return np.reshape(mni_coord[0:3],[1,-1])
