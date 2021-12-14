@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Dec  1 13:29:38 2021
-
 @author: Davide Aloi, PhD student - University of Birmingham
+
+Simple example on how to resample a mask file to a functional or structural file, using nilearn
 """
 
 import os
@@ -10,19 +9,16 @@ from nilearn import image
 
 main_folder = ""
 output_path = ""
-func_file = "" # func file
+output_fname = "" #name of the resampled mask image
+func_file = "" # Functional / structural file
 mask = ""
 
 # func path
-func_map = os.path.join(main_folder, func_file) #path to func file
-
-# Loading func
-func_map = image.load_img(func_map) #load func file
+func_map = os.path.join(main_folder, func_file) #path to functional / structural file
+func_map = image.load_img(func_map)
 
 # mask path
-mask_map = os.path.join(main_folder,mask)
-
-# Loading mask
+mask_map = os.path.join(main_folder,mask) #Path to mask
 mask_map = image.load_img(mask_map)
 
 
@@ -39,5 +35,4 @@ print('Your new mask  has a shape of\n')
 print(mask_resampled.get_fdata().shape)
 
 #Saving everything
-
-image.math_img("img", img=mask_resampled).to_filename('output.nii.gz')
+image.math_img("img", img=mask_resampled).to_filename(output_fname)
