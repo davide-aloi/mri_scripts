@@ -1,4 +1,4 @@
-This repository contains function and scripts that I wrote during my PhD. 
+This repository contains functions and scripts that I wrote during my PhD. 
 Please note that I am currently updating this repository. If you spot an issue / bug, please contact me. Any help / feedback is welcome.
 
 List of functions/scripts and brief description:
