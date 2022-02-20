@@ -16,4 +16,4 @@ fig = roast_vector_sim(e_v.get_fdata(), emag_map.get_fdata(), mask_touched.get_f
 plt.show(fig)
 ```
 Output:
-![image](https://user-images.githubusercontent.com/4202630/154839785-44f1f3fc-3715-43b8-ab02-d5ca00c399f5.png width="300" height="300")
+<img src="https://user-images.githubusercontent.com/4202630/154839785-44f1f3fc-3715-43b8-ab02-d5ca00c399f5.png." data-canonical-src="https://user-images.githubusercontent.com/4202630/154839785-44f1f3fc-3715-43b8-ab02-d5ca00c399f5.png" width="400" height="400" />
