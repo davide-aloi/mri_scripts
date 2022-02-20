@@ -15,8 +15,6 @@ fig = roast_vector_sim(e_v.get_fdata(), emag_map.get_fdata(), mask_touched.get_f
                  figsize=(10,10))
 plt.show(fig)
 ```
-<img src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot.png" data-canonical-src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot.png" width="300" height="300" />
-<img src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot2.png" data-canonical-src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot.png" width="300" height="300" />
-<img src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot3.png" data-canonical-src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot.png" width="300" height="250" />
+<img src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot123png" data-canonical-src="https://github.com/Davi93/mri_scripts/blob/main/plots/roast_plot.png" width="300" height="300" />
 
 
