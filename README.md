@@ -3,7 +3,7 @@ Please note that I am currently updating this repository. If you spot an issue /
 
 ## List of functions/scripts and brief description:
 
-### [Utilities](https://github.com/Davi93/mri_scripts/tree/main/utilities):
+### [MRI utilities](https://github.com/Davi93/mri_scripts/tree/main/utilities):
 - Signal to Noise Ratio: Calculates the SNR of an fMRI image, with the possibility of specifying a mask.
 - Coordinates conversion (voxel space / MNI): transforms MNI coordinates from MNI space to matrix space (and viceversa).
 
