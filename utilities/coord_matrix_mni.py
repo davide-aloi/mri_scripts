@@ -7,6 +7,9 @@ Input: MNI / matrix coordinates, and transformation / rotation matrix
 Please, remember that python indices from 0.
 
 """
+# mni_coords: list of coordinates (X, Y, Z) i.e. [20,12,7]
+# T = affine matrix of your mri scan
+
 
 import numpy as np
 
