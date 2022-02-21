@@ -4,7 +4,7 @@
 Calculates MNI coordinates from matrix coordinates or matrix coordinates from MNI coordinates.
 Input: MNI / matrix coordinates, and transformation / rotation matrix
 
-Please, remember that python indices from 0, as such, you have to add + 1 to the resulting matrix coordinates
+Please, remember that python indices from 0.
 
 """
 
