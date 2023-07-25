@@ -5,14 +5,34 @@
 def sig_to_noise_nifti(input_path, ROI_path=None, save_output=False):
 
     """
-    Calculates the signal-to-noise ratio (SNR) of a functional scan. If a ROI is provided, the script applies the ROI to the scan before
-    calculating the SNR
-
-    input_path = path of the functional scan (nifti format)
-    ROI_path = path of the ROI (if you're using one). Default = None
-    save_output = save the masked file. Default = False
-
-    Output: SNR (Mean/SD), mean and standard deviation
+    sig_to_noise_nifti Function
+    
+    Calculates the signal-to-noise ratio (SNR) of a functional MRI (fMRI) scan, with the option to apply a region of interest (ROI) mask for localized SNR computation.
+    
+    Parameters:
+        input_path (str): Path of the functional scan in NIfTI format (.nii or .nii.gz).
+        ROI_path (str or None, optional): Path of the ROI file in NIfTI format (.nii or .nii.gz). If provided, the ROI will be applied to the functional scan before calculating SNR. Default is None.
+        save_output (bool, optional): Whether to save the masked file. If True, the masked functional scan will be saved with a filename appended with '_masked.nii'. Default is False.
+    
+    Returns:
+        snr_ratio (float): The calculated signal-to-noise ratio (SNR) represented as the mean divided by the standard deviation across all volumes.
+        mean (ndarray): A 3D numpy array representing the mean of the functional scan across time (volumes).
+        std (ndarray): A 3D numpy array representing the standard deviation of the functional scan across time (volumes).
+    
+    Notes:
+    - The input_path should point to the functional scan (4D NIfTI file) with dimensions (x, y, z, t), where (x, y, z) are the spatial dimensions and 't' is the time dimension (number of volumes).
+    - If a ROI_path is provided, the ROI will be resampled to match the spatial dimensions of the functional scan using nearest-neighbor interpolation.
+    - The ROI will then be applied to the functional scan, keeping the voxels within the ROI and setting voxels outside the ROI to NaN.
+    - SNR is computed as the ratio of the mean and standard deviation of the functional scan after applying the ROI mask.
+    - NaN values resulting from the ROI masking are excluded from SNR computation.
+    - The mean and standard deviation arrays represent the mean and standard deviation of the functional scan across the time dimension (volumes) at each voxel.
+    - If save_output is set to True, the masked functional scan will be saved as a NIfTI file in the same directory as the input_path with '_masked.nii' appended to the original filename.
+    
+    Example:
+        snr, mean, std = sig_to_noise_nifti('func_scan.nii', ROI_path='roi_mask.nii', save_output=True)
+    
+    Author:
+    Davide Aloi, PhD student - University of Birmingham
     """
     
     from nilearn import image
