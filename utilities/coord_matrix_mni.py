@@ -1,15 +1,19 @@
 import numpy as np
 
+
+import numpy as np
+
+
 def mni_to_matrix(mni_coords, T):
     """
     Converts MNI coordinates to matrix coordinates using the transformation matrix T.
 
-    Parameters:
-        mni_coords (list): A list containing the MNI coordinates (X, Y, Z) to be converted.
-        T (numpy array): The transformation (affine) matrix of your MRI scan.
+    Args:
+    - mni_coords (list): A list of 3 floats representing the MNI coordinates.
+    - T (numpy.ndarray): A 4x4 transformation matrix.
 
     Returns:
-        numpy array: The matrix coordinates (X, Y, Z) resulting from the transformation.
+    - mat_coord (numpy.ndarray): A 3x1 numpy array representing the matrix coordinates.
     """
     # From MNI space to Matrix space
     first_arg = np.transpose(np.linalg.inv(T))
@@ -23,16 +27,15 @@ def mni_to_matrix(mni_coords, T):
 
 def matrix_to_mni(matrix_coord, T):
     """
-    Converts matrix coordinates to MNI coordinates using the transformation matrix T.
+    Converts a matrix coordinate to MNI coordinate using a transformation matrix.
 
-    Parameters:
-        matrix_coord (numpy array): The matrix coordinates (X, Y, Z) to be converted.
-        T (numpy array): The transformation (affine) matrix of your MRI scan.
+    Args:
+        matrix_coord (list): A list of 3 integers representing the matrix coordinate.
+        T (numpy.ndarray): A 4x4 transformation matrix.
 
     Returns:
-        numpy array: The MNI coordinates (X, Y, Z) resulting from the transformation.
+        numpy.ndarray: A 1x3 array representing the MNI coordinate.
     """
-    # From matrix space to MNI space
     second_arg = np.array([matrix_coord[0], matrix_coord[1], matrix_coord[2], 1])
     second_arg = np.reshape(second_arg, [-1, 1])
     mni_coord = np.dot(T, second_arg)
